@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="todo-container">
+    <h1 style="color: white; margin-left: 40%;">My To-do List</h1>
+    <h6>Hello {{user.username}}</h6>
+
+    <div class="todo-search">
+        <form method="POST">
+            {% csrf_token %}
+            {{form.title}}
+            <button>Add Task</button>
+        </form>
+    </div>
+
+    <div class="todo-list">
+
+        {% for task in tasks %}
+
+        <div class="todo-list-item">
+            <div class="task">
+                <input type="checkbox">
+                {{task.title}}
+            </div>
+
+            <div class="btn-container">
+                <div class="edit">
+                    <a href="{% url 'update-todo' task.id%}">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                </div>
+
+                <div class="delete">
+                    <a href="{% url 'delete-todo' task.id%}">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% include "authentication/logout.html" %}
+</div>
+{% endblock content %}
+
+
+
