@@ -10,4 +10,4 @@ class TaskForm(forms.ModelForm):  # Define a class named TaskForm that inherits 
     
     class Meta:  # Define an inner Meta class for metadata
         model = Task  # Specify that the form is based on the Task model
-        fields = ["title"]  # Include only the title field in the form
+        fields = ["title", "completed"]  # Include only the title field in the form

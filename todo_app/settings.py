@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',cd
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -142,6 +143,8 @@ AUTO_LOGOUT = {
 REDIRECT_URI = 'http://127.0.0.1:8001/callback/'
 
 LOGIN_REDIRECT_URL = 'http://127.0.0.1:8001/callback/'
+
+LOGIN_URL = '/login/'
 
 CASDOOR_CLIENT_ID = os.getenv('CASDOOR_CLIENT_ID')
 CASDOOR_CLIENT_SECRET = os.getenv('CASDOOR_CLIENT_SECRET')

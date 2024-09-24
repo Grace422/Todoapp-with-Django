@@ -9,20 +9,24 @@ from jwt import InvalidTokenError
 
 
 # Create your views here.
-@login_required(login_url="casdoor_sso")
+@login_required
 def todo_form(request):
-    tasks = Task.objects.all()
+    tasks = Task.objects.filter(user=request.user)
     form = TaskForm()
     if request.method=='POST':
         form = TaskForm(request.POST)
         if form.is_valid():
-            form.save()
+            task = form.save(commit=False)  
+            task.user = request.user  
+            task.save()
             return redirect("todo-form")
     context = {"tasks":tasks, "form": form}
     return render(request, "todo_form.html", context)
 
+
+@login_required
 def update_todo(request, pk):
-    task = Task.objects.get(id=pk)
+    task = Task.objects.get(Task, id=pk, user=request.user)
     form = TaskForm(instance=task)
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
@@ -33,8 +37,10 @@ def update_todo(request, pk):
     context = {"form": form}
     return render(request, "todo_form.html", context)
 
+
+@login_required
 def delete_todo(request, pk):
-    task = Task.objects.get(id=pk)
+    task = Task.objects.get(Task, id=pk, user=request.user)
     if request.method == 'POST':
         task.delete()
         return redirect("todo-form")
