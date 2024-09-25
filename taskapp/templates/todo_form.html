@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load i18n%}
 
 <div class="todo-container">
-    <h1 style="color: white; margin-left: 40%;">My To-do List</h1>
-    <h6>Hello {{user.username}}</h6>
+    <h1 style="color: white; margin-left: 40%;">{%trans "My To-do List" %}</h1>
+    <h6>{% trans "Welcome" %} {{user.username}}</h6>
+    
 
     <div class="todo-search">
         <form method="POST">
             {% csrf_token %}
             {{form.title}}
-            <button>Add Task</button>
+            <button>{%trans "Add Task" %}</button>
         </form>
     </div>
 

@@ -2,6 +2,7 @@
 
 {% block content %}
 {{ redirect_to_login_immediately }}
+{% load i18n%}
 
 <p><a href=" {% url 'login' %} "
     style="text-decoration: none; 
@@ -9,6 +10,6 @@
         background-color: #a459f4; 
         padding: 10px; 
         border-radius: 8px;">
-        Logout</a></p>
+        {%trans "Logout" %}</a></p>
 
 {% endblock %}
