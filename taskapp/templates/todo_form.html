@@ -43,6 +43,26 @@
         {% endfor %}
     </div>
     {% include "authentication/logout.html" %}
+
+    <div class="select">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as AVAILABLE_LANGUAGES %}
+        {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+         <form action="{% url 'set_language' %}" method="post" class="select">
+        {% csrf_token %}
+        <select name="language" onchange="this.form.submit()" class="select">
+            {% for language in languages %}   
+                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                    {{ language.name_local }}
+                </option>
+                <!-- <option value="{{ language.code }}">
+                    {{ language.name_local }}
+                </option>  -->
+            {% endfor %}
+        </select>
+        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+    </form>
+    </div>
 </div>
 {% endblock content %}
 

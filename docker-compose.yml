@@ -43,7 +43,7 @@ services:
     container_name: django_todo_app
     volumes:
       - web_data:/app 
-      - locale_data:/locale
+      - ./locale:/app/locale
     environment:
       CASDOOR_CLIENT_ID: ${CASDOOR_CLIENT_ID}
       CASDOOR_CLIENT_SECRET: ${CASDOOR_CLIENT_SECRET}
@@ -63,5 +63,4 @@ networks:
 volumes:
   casdoor_data:
   web_data:
-  locale_data:
   my_db:

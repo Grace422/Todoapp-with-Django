@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-26 12:41+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: taskapp/forms.py:9
+msgid "Enter Todo"
+msgstr "Enter Todo"
+
+#: taskapp/templates/authentication/logout.html:13
+msgid "Logout"
+msgstr "Logout"
+
+#: taskapp/templates/delete_todo.html:7
+msgid "Are you sure want to delete"
+msgstr "Are you sure want to delete"
+
+#: taskapp/templates/delete_todo.html:11
+msgid "Cancel"
+msgstr "Cancel"
+
+#: taskapp/templates/delete_todo.html:15
+msgid "Delete"
+msgstr "Delete"
+
+#: taskapp/templates/todo_form.html:7
+msgid "My To-do List"
+msgstr "My To-do List"
+
+#: taskapp/templates/todo_form.html:8
+msgid "Welcome"
+msgstr "Welcome"
+
+#: taskapp/templates/todo_form.html:15
+msgid "Add Task"
+msgstr "Add Task"
+
+#: taskapp/templates/todo_form.html:53
+msgid "Change Language"
+msgstr "Change Language"
+
+#: todo_app/settings.py:35
+msgid "French"
+msgstr "French"
+
+#: todo_app/settings.py:36
+msgid "English"
+msgstr "English"

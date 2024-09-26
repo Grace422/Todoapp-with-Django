@@ -140,3 +140,18 @@ input:focus, select:focus{
     margin-left: 10px;
     
 }
+
+.select{
+    background-color: #a459f4;
+    border-radius: 8px;
+    padding: 10px;
+    display: inline-block;
+    color: white;
+}
+
+.select:hover{
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 10px;
+    color: white;
+}
