@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Task
+from .models import CustomUser
 from .forms import TaskForm
+from .forms import AdditionalUserInfo
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import requests
@@ -27,7 +29,7 @@ def todo_form(request):
 
 @login_required
 def update_todo(request, pk):
-    task = Task.objects.get(Task, id=pk, user=request.user)
+    task = Task.objects.get(Task, pk=pk, user=request.user)
     form = TaskForm(instance=task)
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
@@ -41,7 +43,7 @@ def update_todo(request, pk):
 
 @login_required
 def delete_todo(request, pk):
-    task = Task.objects.get(Task, id=pk, user=request.user)
+    task = Task.objects.get(Task, pk=pk, user=request.user)
     if request.method == 'POST':
         task.delete()
         return redirect("todo-form")
@@ -64,7 +66,6 @@ def delete_todo(request, pk):
 
 
 from django.conf import settings
-# from casdoor import CasdoorSDK
 from django.contrib.auth import get_user_model
 print(settings.CASDOOR_CLIENT_ID)
 
@@ -116,18 +117,47 @@ def callback(request):
 
         if created:
             user.set_unusable_password()
+            user.has_filled_additional_info = False
             user.save()
         
         if user is not None:
             login(request, user)
-            return redirect("todo-form")
+
+            if not user.has_filled_additional_info:
+                return redirect("additional_info")
+            
+        return redirect("todo-form")
         
-        raise Exception("Failed to authenticate user")
+            
+    raise Exception("Failed to authenticate user")
 
 
-    return redirect("todo-form")
+    
   
+def additional_info(request):
+    user = request.user
+    
+    if user.has_filled_additional_info:
+        return redirect('todo-form') 
+    
+    if request.method == "POST":
+        form = AdditionalUserInfo(request.POST)
+        if form.is_valid():
+            phone_number = form.cleaned_data.get('phone_number')
+            job = form.cleaned_data.get('job')
 
+            user = request.user
+            user.phone_number = phone_number
+            user.job = job
+            user.has_filled_additional_info = True
+            user.save()
+
+            return redirect("todo-form")
+
+    else:
+        form = AdditionalUserInfo()
+
+    return render(request, 'additional_info.html', {'form': form})
 
 def my_logout(request):
     logout(request)

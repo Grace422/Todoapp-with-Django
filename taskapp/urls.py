@@ -12,5 +12,6 @@ urlpatterns = [
     path("task/<int:pk>/delete", views.delete_todo, name="delete-todo"),
     path("logout/", views.my_logout, name="logout"),
     path('set_language/', set_language, name='set_language'),
+    path("additional-info", views.additional_info, name="additional_info")
     
 ]

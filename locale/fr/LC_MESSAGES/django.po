@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-26 12:42+0000\n"
+"POT-Creation-Date: 2024-09-30 10:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: taskapp/forms.py:9
+#: taskapp/forms.py:10
 msgid "Enter Todo"
 msgstr "Entre une tache"
+
+#: taskapp/forms.py:23
+msgid "Enter your profession"
+msgstr "Entre votre profession"
+
+#: taskapp/forms.py:28
+msgid "Phone number"
+msgstr "Numero de telephone"
 
 #: taskapp/templates/authentication/logout.html:13
 msgid "Logout"
@@ -50,10 +58,6 @@ msgstr "Bienvenue"
 msgid "Add Task"
 msgstr "Ajouter Tache"
 
-#: taskapp/templates/todo_form.html:53
-msgid "Change Language"
-msgstr "Change Langue"
-
 #: todo_app/settings.py:35
 msgid "French"
 msgstr "Francais"
@@ -61,3 +65,9 @@ msgstr "Francais"
 #: todo_app/settings.py:36
 msgid "English"
 msgstr "Anglais"
+
+#~ msgid "Tell us more about you"
+#~ msgstr "Veillez nous en dire plus sur vous"
+
+#~ msgid "Change Language"
+#~ msgstr "Change Langue"

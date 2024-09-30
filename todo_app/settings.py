@@ -44,13 +44,13 @@ LOCALE_PATHS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'taskapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'taskapp',
 ]
 
 MIDDLEWARE = [
@@ -157,6 +157,8 @@ REDIRECT_URI = 'http://127.0.0.1:8001/callback/'
 LOGIN_REDIRECT_URL = 'http://127.0.0.1:8001/callback/'
 
 LOGIN_URL = '/login/'
+
+AUTH_USER_MODEL="taskapp.CustomUser"
 
 CASDOOR_CLIENT_ID = os.getenv('CASDOOR_CLIENT_ID')
 CASDOOR_CLIENT_SECRET = os.getenv('CASDOOR_CLIENT_SECRET')
