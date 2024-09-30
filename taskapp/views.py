@@ -29,7 +29,7 @@ def todo_form(request):
 
 @login_required
 def update_todo(request, pk):
-    task = Task.objects.get(Task, pk=pk, user=request.user)
+    task = Task.objects.get(pk=pk, user=request.user)
     form = TaskForm(instance=task)
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
@@ -43,7 +43,7 @@ def update_todo(request, pk):
 
 @login_required
 def delete_todo(request, pk):
-    task = Task.objects.get(Task, pk=pk, user=request.user)
+    task = Task.objects.get(pk=pk, user=request.user)
     if request.method == 'POST':
         task.delete()
         return redirect("todo-form")

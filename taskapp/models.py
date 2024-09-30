@@ -17,8 +17,8 @@ class Task(models.Model):
     
 class CustomUser(AbstractUser):
     phone_number = models.TextField(max_length=15, default=123456789)
-    job = models.TextField(max_length=200)
+    job = models.TextField(blank=True, null=True)
     has_filled_additional_info = models.BooleanField(default=False)    
 
     def __str__(self):
-        return self.job
+        return self.job if self.job else self.phone_number
