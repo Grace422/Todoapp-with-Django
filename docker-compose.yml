@@ -1,12 +1,16 @@
 version: "3"
 services:
   casdoor:
-    image: casbin/casdoor-all-in-one
+    image: nzhinuconnect
     container_name: casdoor
     ports:
       - "8000:8000"
     environment:
-      - DATA_SOURCE=sqlite3
+      DB_HOST: ${HOST}
+      DB_PORT: ${PORT}
+      DB_DATABASE: ${MYSQL_DATABASE}
+      DB_USERNAME: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
     restart: always
     volumes:
       - casdoor_data:/var/lib/casdoor

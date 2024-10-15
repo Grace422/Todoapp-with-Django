@@ -10,7 +10,6 @@ import jwt
 from jwt import InvalidTokenError
 
 
-
 # Create your views here.
 @login_required
 def todo_form(request):
