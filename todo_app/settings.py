@@ -169,13 +169,13 @@ CASDOOR_USERINFO_ENDPOINT = os.getenv('CASDOOR_USERINFO_ENDPOINT')
 
 
 CASDOOR_CONFIG = {
-    'endpoint': 'http://172.18.0.3:8000/',
-    'client_id': '215f192e56edb2796f77' , 
-    'client_secret': 'adf476c456b764f157b6ebb4e4d6436ba430b07c',
+    'endpoint': 'http://172.19.0.3:8000/',
+    'client_id': '55dfe8a1a7e8fbc54bed' , 
+    'client_secret': '257307d67835a1bb531d1e83cda460f01dc5b41b',
     'redirect_uri': 'http://127.0.0.1:8001/callback/',
-    'authorization_endpoint': 'http://172.18.0.3:8000/login/oauth/authorize',
-    'token_endpoint': 'http://172.18.0.3:8000/api/login/oauth/access_token',
-    'userinfo_endpoint': 'http://172.18.0.3:8000/api/userinfo'
+    'authorization_endpoint': 'http://172.19.0.3:8000/login/oauth/authorize',
+    'token_endpoint': 'http://172.19.0.3:8000/api/login/oauth/access_token',
+    'userinfo_endpoint': 'http://172.19.0.3:8000/api/userinfo'
 }
 
 
