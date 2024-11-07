@@ -60,6 +60,23 @@ services:
     networks:
       - app_network
 
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: react
+    ports:
+      - 3000:3000
+    depends_on:
+      - web
+    environment:
+      # - REACT_APP_API_HOST=${REACT_APP_API_HOST}
+      - REACT_APP_API_PORT=${REACT_APP_API_PORT} 
+    volumes:
+      - react_data:/app/frontend
+    networks:
+      - app_network
+
 networks:
   app_network:
     driver: bridge
@@ -68,3 +85,4 @@ volumes:
   casdoor_data:
   web_data:
   my_db:
+  react_data:

@@ -1,5 +1,5 @@
 from django import forms  # Import the Django forms module
-from .models import Task  # Import the Task model from the current app's models file
+from api.models import Task  # Import the Task model from the current app's models file
 from django.utils.translation import gettext_lazy as _
 from .models import CustomUser
 

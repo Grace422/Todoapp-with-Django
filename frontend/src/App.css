@@ -1,0 +1,70 @@
+.App{
+  margin: 5%;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #e2e2e2;
+}
+
+.form{
+  display: flex;
+}
+
+.form-input{
+  width: 100%;
+  padding: 15px 20px;
+  margin-right: 15px;
+  border-radius: 5px;
+  border-color: #e2e2e2;
+}
+
+.form-input::placeholder{
+  font-weight: bold;
+}
+
+.form-input:focus{
+  outline: none;
+}
+
+.form-btn{
+  background-color: red;
+  padding: 9px 20px;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.form-btn:hover{
+  background-color: transparent;
+  color: red;
+  border: 1px dashed red;
+}
+
+.todotitle{
+  font-size: 30px;
+  letter-spacing: 2px;
+  background: url(../image/flowers.jpeg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.todo-form{
+  display: flex;
+  border-radius: 5px;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 1px 18px;
+}
+
+
+
+
+
+

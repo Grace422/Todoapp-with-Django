@@ -32,8 +32,8 @@ ALLOWED_HOSTS = ['*']
 # Languages
 
 LANGUAGES = [
-    ("fr", _("French")),
-    ("en", _("English")),
+    ('fr', _('French')),
+    ('en', _('English')),
 ]
 
 LOCALE_PATHS = [
@@ -45,15 +45,20 @@ LOCALE_PATHS = [
 
 INSTALLED_APPS = [
     'taskapp',
+    'api',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_swagger',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -70,7 +75,7 @@ ROOT_URLCONF = 'todo_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,6 +156,11 @@ AUTO_LOGOUT = {
     'REDIRECT_TO_LOGIN_IMMEDIATELY': True,
 }
 
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+# ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 REDIRECT_URI = 'http://127.0.0.1:8001/callback/'
 
@@ -158,7 +168,7 @@ LOGIN_REDIRECT_URL = 'http://127.0.0.1:8001/callback/'
 
 LOGIN_URL = '/login/'
 
-AUTH_USER_MODEL="taskapp.CustomUser"
+AUTH_USER_MODEL='taskapp.CustomUser'
 
 CASDOOR_CLIENT_ID = os.getenv('CASDOOR_CLIENT_ID')
 CASDOOR_CLIENT_SECRET = os.getenv('CASDOOR_CLIENT_SECRET')
@@ -169,13 +179,13 @@ CASDOOR_USERINFO_ENDPOINT = os.getenv('CASDOOR_USERINFO_ENDPOINT')
 
 
 CASDOOR_CONFIG = {
-    'endpoint': 'http://172.19.0.3:8000/',
-    'client_id': '55dfe8a1a7e8fbc54bed' , 
-    'client_secret': '257307d67835a1bb531d1e83cda460f01dc5b41b',
+    'endpoint': 'http://172.19.0.4:8000/',
+    'client_id': 'a87722a6ca745792e21a' , 
+    'client_secret': 'a4db06b2b38c451142efbbfd9ba50387754f1985',
     'redirect_uri': 'http://127.0.0.1:8001/callback/',
-    'authorization_endpoint': 'http://172.19.0.3:8000/login/oauth/authorize',
-    'token_endpoint': 'http://172.19.0.3:8000/api/login/oauth/access_token',
-    'userinfo_endpoint': 'http://172.19.0.3:8000/api/userinfo'
+    'authorization_endpoint': 'http://172.19.0.4:8000/login/oauth/authorize',
+    'token_endpoint': 'http://172.19.0.4:8000/api/login/oauth/access_token',
+    'userinfo_endpoint': 'http://172.19.0.4:8000/api/userinfo'
 }
 
 

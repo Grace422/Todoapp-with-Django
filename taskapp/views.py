@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Task
+from api.models import Task
 from .models import CustomUser
 from .forms import TaskForm
 from .forms import AdditionalUserInfo
@@ -10,7 +10,7 @@ import jwt
 from jwt import InvalidTokenError
 
 
-# Create your views here.
+# Create your views here.    
 @login_required
 def todo_form(request):
     tasks = Task.objects.filter(user=request.user)
@@ -125,7 +125,7 @@ def callback(request):
             if not user.has_filled_additional_info:
                 return redirect("additional_info")
             
-        return redirect("todo-form")
+        return redirect("http://localhost:3000/")
         
             
     raise Exception("Failed to authenticate user")
@@ -151,7 +151,7 @@ def additional_info(request):
             user.has_filled_additional_info = True
             user.save()
 
-            return redirect("todo-form")
+            return redirect("http://localhost:3000/")
 
     else:
         form = AdditionalUserInfo()
