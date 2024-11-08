@@ -40,9 +40,13 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 # Application definition
-
 INSTALLED_APPS = [
     'taskapp',
     'api',
@@ -55,6 +59,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
     'corsheaders',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -106,6 +111,7 @@ DATABASES = {
     }
 }
 
+APPEND_SLASH=False
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

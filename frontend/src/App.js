@@ -1,10 +1,23 @@
 import './App.css';
 import TodoForm from './TodoForm';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { AuthContext } from 'AuthContext';
+import LoginPage from 'LoginPage';
+import CallbackPage from 'CallbackPage';
 
 function App() {
+  const { user } = useContext(AuthContext);
   return (
     <div className="App">
-      <TodoForm/>
+        <Router>
+            <Route path="/login" component={LoginPage} />
+            <Route path="/callback" component={CallbackPage} />
+
+            {/* Protected Route */}
+            <Route path="/dashboard">
+                {user ?  <TodoForm/>: <Redirect to="/login" />}
+            </Route>
+        </Router>
     </div>
   );
 }

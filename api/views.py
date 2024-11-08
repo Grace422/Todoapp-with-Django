@@ -20,19 +20,21 @@ class CreateTaskView(CreateAPIView):
                 serializer = TaskSerializer(data=request.data)
 
                 if serializer.is_valid():
-                        serializer.save(user=request.user)
+                        serializer.save()
                         return Response(serializer.data, status=200)
+                print("error", serializer.errors)
                 return Response(serializer.errors, status=400)
 
 
 
 
 # Create your views here.
-@permission_classes([IsAuthenticated])
+#@permission_classes([IsAuthenticated])
 @api_view(['GET'])
 def taskList(request):
                 # user_id = request.user.id
-                task = Task.objects.filter(user=request.user).order_by('-id')
+                #task = Task.objects.filter(user=request.user).order_by('-id')
+                task = Task.objects.all()
                 serializer = TaskSerializer(task, many=True)
                 return Response(serializer.data, status=200)
                 # return Response(serializer.errors, status=400)
@@ -51,29 +53,23 @@ def taskList(request):
 
 
 
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 @api_view(['PUT'])
 def taskUpdate(request, pk): 
-        try:
-                task = Task.objects.get(pk=pk, user=request.user)
-        except Task.DoesNotExist:
-                return Response({"detail": "Task not found."}, status=404)  # 404 if task not found
-
+        task = Task.objects.get(pk=pk)
+        
         serializer = TaskSerializer(instance=task, data=request.data)
 
         if serializer.is_valid():
-                serializer.save(user=request.user)
-                return Response(serializer.data, status=200)  # Successful update
+                serializer.save()
+                return Response(serializer.data, status=200)  
         return Response(serializer.errors, status=400)
     
 
-@permission_classes([IsAuthenticated]) 
+# @permission_classes([IsAuthenticated]) 
 @api_view(['DELETE'])
 def taskDelete(request, pk):
-        try:
-                task = Task.objects.get(pk=pk, user=request.user)
-        except Task.DoesNotExist:
-                return Response({"detail": "Task not found."}, status=404)  # Return 404 if task not found
+        task = Task.objects.get(pk=pk)
 
         task.delete()
         return Response({"detail": "Task deleted successfully."}, status=200)

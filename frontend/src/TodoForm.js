@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 const axiosInstance = axios.create({
-    baseURL:"http://localhost:8001",
+    baseURL:"http://localhost:8001/en",
     headers:{
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default function TodoForm(){
     // const [editingId, setEditingId] = useState(null);
 
     useEffect(() => {
-        axios.get("http://localhost:8001/task-list")
+        axios.get("http://localhost:8001/en/task-list/")
             .then((response) => setTodo(response.data))
             .catch((error) => console.error(error));
     }, []);
@@ -27,11 +27,13 @@ export default function TodoForm(){
 
     
     const addTodo = () => {
-        axiosInstance.post("/task-create", 
+        axios.post("http://localhost:8001/en/task-create/", 
             { title: title },
             {headers:{
-                "Content-Type":"multipart/form-data",
+                Accept: "application/json",
+                "Content-Type": "application/json",
             }}
+            
         )
             .then((response) => setTodo([...todo, response.data]))
             .catch((error) => console.error(error));
@@ -39,7 +41,7 @@ export default function TodoForm(){
     };
 
     const updateTodo = (id) => {
-        axios.put(`http://localhost:8001/task-update/${id}`, 
+        axios.put(`http://localhost:8001/task-update/${id}/`, 
             { headers: { "Content-Type": "application/json" }}
         )
             .then((response) => {
@@ -52,9 +54,25 @@ export default function TodoForm(){
     };
 
     const deleteTodo = (id) => {
-        axios.delete(`http://localhost:8001/task-delete/${id}`)
+        axios.delete(`http://localhost:8001/task-delete/${id}/`)
             .then(() => setTodo(todo.filter((todo) => todo.id !== id)))
             .catch((error) => console.error(error));
+    };
+
+    const fetchData = async () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const response = await axios.get('http://localhost:8001/task-list', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                console.log('Data:', response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
     };
     return(
         <div>

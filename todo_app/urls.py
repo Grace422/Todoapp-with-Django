@@ -18,14 +18,17 @@ from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
 from rest_framework.schemas import get_schema_view
 from django.views.generic import TemplateView
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 
 urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('', include('api.urls')),
     path('', include('taskapp.urls')),
-    path('api_schema/', get_schema_view(
-        title='API Schema',
+    path('api_schema/', get_schema_view(title='API Schema',
         description='Guide for the REST API'
     ),  name='api_schema'),
     path('swagger-ui/', TemplateView.as_view(
@@ -33,5 +36,7 @@ urlpatterns = i18n_patterns(
         extra_context={'schema_url':'api_schema'}
     ),  name='swagger-ui'),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # path('casdoor/', include('casdoor_auth.urls')),
 )
