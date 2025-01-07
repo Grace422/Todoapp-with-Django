@@ -1,0 +1,11 @@
+{  
+    "welcome": "Bienvenue a Get Done!",   
+    "text": "Gérez votre temps efficacement avec une application de tâches. Ne laissez plus vos corvées planifiées vous échapper et accomplissez vos objectifs en fonction de leur priorité.",
+    "greeting": "Salut, {{name}}",
+    "title": "Ma Liste-de-Taches",
+    "choose": "Choisir Langue",
+    "login": "Connectez-vous pour continuer",
+    "enter": "Entrer une tâche",
+    "Add": "Ajouter",
+    "Update": "Mettre à jour"
+}

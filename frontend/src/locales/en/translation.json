@@ -1,0 +1,11 @@
+{   
+    "welcome": "Welcome to Get Done!",   
+    "text": "Manage your time efficiently with a todo app, stop forgetting chores you have planned and get things done by order of priority",
+    "greeting": "Hello, {{name}}",
+    "title": "My To-do List",
+    "choose": "Choose Language",
+    "login": "Login to Continue",
+    "enter": "Enter a todo",
+    "Add": "Add",
+    "Update": "Update"
+}

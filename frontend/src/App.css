@@ -63,6 +63,55 @@
   padding: 1px 18px;
 }
 
+.welcome{
+  text-align: center;
+  color: blue;
+}
+
+.text{
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.loginbtn{
+  padding: 10px 30px;
+  border-radius: 8px;
+  border: none;
+  background-color: blue;
+  color: white;
+  position: absolute;
+  top: 40%;
+  right: 190px;
+}
+
+.welcome-container{
+    margin: 10%;
+}
+
+#language-select{
+  padding: 10px 15px;
+  margin-left: 5px;
+  margin-top: 10px;
+  background-color: rgb(209, 206, 206);
+  border: none;
+  border-radius: 8px;
+}
+
+.language-div{
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.logout-btn{
+  padding: 10px 30px;
+  border-radius: 8px;
+  border: none;
+  background-color: blue;
+  color: white;
+  position: absolute;
+  top: 66.5%;
+  right: 250px;
+}
 
 
 
